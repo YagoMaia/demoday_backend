@@ -19,7 +19,7 @@
 
     - name: Subir a nova versão da API FastAPI
       # Injetamos a variável CORS dinamicamente para permitir que o Frontend acesse a API
-      shell: "docker run -d --name fastapi-backend --restart unless-stopped -p 8000:8000 -e CORS='http://{{ ec2_host }}:3000' {{ app_image }}"
-      
+      shell: "docker run -d --name fastapi-backend --restart unless-stopped -p 8000:8000 -e CORS='{{ frontend_url }}' {{ app_image }}"
+
     - name: Limpeza de disco
       shell: "docker image prune -a -f"
